@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.personListTitle}</title>
+        
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h1>#{str.personListTitle}</h1>
+                <h:form>
+                    <p:commandButton value="#{str.buttonAdd}"  action="#{personBean.iniciar()}" 
+                                     ></p:commandButton>
+                </h:form>
+                <p:dataTable value="#{personBean.persons}" var="p" >
+                    <p:column headerText="#{str.action}" >
+                        <h:form>
+                            <p:commandButton value="#{str.buttonEdit}"   action="#{personBean.editar(p)}"
+                                             ></p:commandButton>
+                        </h:form>
+                    </p:column>
+                    <p:column headerText="#{str.personNameHeader}">
+                        <p:outputLabel value="#{p.nombrePerson}" ></p:outputLabel>                        
+                    </p:column>
+                    <p:column headerText="#{str.directionHeader}">
+                        <p:outputLabel value="#{p.direction}" ></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.loginHeader}">
+                        <p:outputLabel value="#{p.login.userNombre}" ></p:outputLabel>
+                    </p:column>
+                </p:dataTable>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
+

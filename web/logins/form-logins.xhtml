@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.loginFormTitle}</title>
+
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml" >
+            <ui:define name="contenido" >
+                <h2>#{str.loginFormHeader}</h2>
+                <p:fieldset legend="#{str.loginLegendForm}" >
+                    <h:form>
+                        <p:inputText placeholder="#{str.loginUserHeader}"  value="#{loginBean.login.userNombre}" ></p:inputText>
+                        <p:commandButton value="#{str.buttonSave}"  
+                                         action="#{loginBean.guardar()}" ></p:commandButton>
+                        <p:commandButton value="#{str.buttonDelete}" 
+                                         action="#{loginBean.eliminar()}" ></p:commandButton>
+                        <p:commandButton value="#{str.buttonCancel}" action="#{loginBean.cancelar()}" ></p:commandButton>
+                    </h:form>
+                </p:fieldset>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

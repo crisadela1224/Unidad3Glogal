@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.orderFormTitle}</title>
+                       </h:head>
+        <h:body>
+            <ui:composition template="/templates/template.xhtml" >
+                <ui:define name="contenido" >
+                    <h2>#{str.orderFormHeader}</h2>
+                    <p:fieldset legend="#{str.orderLegendForm}" >
+                    <h:form>
+                        <h:panelGrid columns="1">
+                            <p:inputText placeholder="#{str.orderCustomerPrompt}" value="#{orderHeaderBean.orderHeader.idCustomer}" ></p:inputText>
+                           
+                            <p:inputText placeholder="#{str.orderDatePrompt}" value="#{orderHeaderBean.orderHeader.date}"  ></p:inputText> 
+                            <p:selectOneMenu value="#{orderHeaderBean.orderHeader.methodPayment.idMethodPayment}" >
+                                <f:selectItems value="#{orderHeaderBean.methodPayments}" var="m" itemLabel="#{m.name}" itemValue="#{m.idMethodPayment}" ></f:selectItems>
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                        <p:commandButton value="#{str.buttonSave}"  action="#{orderHeaderBean.guardar()}" ></p:commandButton>
+                        <p:commandButton value="#{str.buttonDelete}" action="#{orderHeaderBean.eliminar()}" ></p:commandButton>
+                        <p:commandButton value="#{str.buttonCancel}" action="#{orderHeaderBean.cancelar()}" ></p:commandButton>
+                    </h:form>
+                    </p:fieldset>
+                </ui:define>
+            </ui:composition>
+    </h:body>
+</html>
+
+    
+
+
